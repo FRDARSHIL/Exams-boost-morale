@@ -1,0 +1,403 @@
+/* =====================
+   Reset & Base
+   ===================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary: #6c63ff;
+  --primary-dark: #574fd6;
+  --secondary: #ff6584;
+  --accent: #43e97b;
+  --bg: #0f0f1a;
+  --surface: #1a1a2e;
+  --surface2: #16213e;
+  --text: #e8e8f0;
+  --text-muted: #a0a0c0;
+  --radius: 16px;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --transition: 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* =====================
+   Header
+   ===================== */
+.header {
+  text-align: center;
+  padding: 2rem 1rem 1.5rem;
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+  border-bottom: 2px solid rgba(108, 99, 255, 0.3);
+}
+
+.logo {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+.tagline {
+  margin-top: 0.5rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* =====================
+   Hero
+   ===================== */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 4rem 1.5rem 5rem;
+  background: linear-gradient(160deg, #1a1a3e 0%, #0f0f1a 60%);
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 30%, var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0 auto 2rem;
+}
+
+/* Floating emoji animations */
+.floating-emojis {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.floating-emojis span {
+  position: absolute;
+  font-size: 2rem;
+  animation: floatUp 6s ease-in-out infinite;
+  opacity: 0.15;
+}
+
+.floating-emojis span:nth-child(1) { left: 5%;  top: 20%; animation-delay: 0s;    font-size: 2.5rem; }
+.floating-emojis span:nth-child(2) { left: 80%; top: 15%; animation-delay: 1s;    font-size: 2rem;   }
+.floating-emojis span:nth-child(3) { left: 15%; top: 65%; animation-delay: 2s;    font-size: 1.8rem; }
+.floating-emojis span:nth-child(4) { left: 70%; top: 70%; animation-delay: 0.5s;  font-size: 2.2rem; }
+.floating-emojis span:nth-child(5) { left: 45%; top: 10%; animation-delay: 1.5s;  font-size: 2rem;   }
+.floating-emojis span:nth-child(6) { left: 90%; top: 50%; animation-delay: 2.5s;  font-size: 1.6rem; }
+
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0) rotate(0deg);   opacity: 0.15; }
+  50%       { transform: translateY(-20px) rotate(8deg); opacity: 0.35; }
+}
+
+/* =====================
+   Buttons
+   ===================== */
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(108, 99, 255, 0.5);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(108, 99, 255, 0.7);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  margin-left: 0.75rem;
+}
+
+.btn-secondary:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* =====================
+   Section Shared
+   ===================== */
+.section-title {
+  text-align: center;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.section-sub {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+/* =====================
+   Quote Section
+   ===================== */
+.quote-section {
+  padding: 3rem 1.5rem;
+  background: var(--surface);
+  text-align: center;
+}
+
+.quote-card {
+  display: inline-block;
+  max-width: 680px;
+  background: var(--surface2);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(108, 99, 255, 0.2);
+}
+
+.quote-icon {
+  font-size: 2.5rem;
+}
+
+.quote-text {
+  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+  font-style: italic;
+  color: var(--text);
+  margin: 1rem 0;
+  line-height: 1.7;
+  min-height: 4rem;
+  transition: opacity 0.4s ease;
+}
+
+.quote-text.fade {
+  opacity: 0;
+}
+
+.quote-author {
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  min-height: 1.5rem;
+  transition: opacity 0.4s ease;
+}
+
+.quote-author.fade {
+  opacity: 0;
+}
+
+/* =====================
+   Timer Section
+   ===================== */
+.timer-section {
+  padding: 3.5rem 1.5rem;
+  background: var(--bg);
+  text-align: center;
+}
+
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.timer-controls input {
+  width: 80px;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 2px solid var(--primary);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1rem;
+  text-align: center;
+}
+
+.timer-display {
+  font-size: clamp(3rem, 12vw, 7rem);
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0.5rem 0 1.5rem;
+  letter-spacing: 4px;
+}
+
+.timer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.timer-message {
+  margin-top: 1.2rem;
+  font-size: 1.1rem;
+  color: var(--accent);
+  font-weight: 600;
+  min-height: 1.6rem;
+}
+
+/* =====================
+   Tips Section
+   ===================== */
+.tips-section {
+  padding: 3.5rem 1.5rem;
+  background: var(--surface);
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.tip-card {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  border: 1px solid rgba(108, 99, 255, 0.15);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.tip-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(108, 99, 255, 0.25);
+  border-color: rgba(108, 99, 255, 0.4);
+}
+
+.tip-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.tip-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.tip-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* =====================
+   Affirmations
+   ===================== */
+.affirmation-section {
+  padding: 3.5rem 1.5rem;
+  background: linear-gradient(135deg, #1a1a3e, #0f0f1a);
+  text-align: center;
+}
+
+.affirmation-carousel {
+  max-width: 640px;
+  margin: 0 auto 1.5rem;
+  min-height: 3.5rem;
+}
+
+.affirmation-text {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-weight: 700;
+  color: var(--accent);
+  transition: opacity 0.5s ease;
+}
+
+.affirmation-text.fade {
+  opacity: 0;
+}
+
+.affirmation-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.dot.active {
+  background: var(--primary);
+  transform: scale(1.3);
+}
+
+/* =====================
+   Footer
+   ===================== */
+.footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: var(--surface);
+  border-top: 1px solid rgba(108, 99, 255, 0.2);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* =====================
+   Responsive
+   ===================== */
+@media (max-width: 480px) {
+  .btn-secondary {
+    margin-left: 0;
+    margin-top: 0.75rem;
+  }
+
+  .quote-card {
+    padding: 1.5rem 1rem;
+  }
+}
