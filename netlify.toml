@@ -1,0 +1,20 @@
+# Netlify configuration for Exams Boost Morale
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # No build step needed — pure static HTML/CSS/JS
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 404
+  force = false
